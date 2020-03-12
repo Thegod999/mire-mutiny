@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 6927c126e29470f4ea733fbecabe44d9
+guid: f7488f03c4b45664382ef6a2d949917b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6530547530359624107
-    second: horizontal_movement_0
+      213: 7066190639942465644
+    second: idleslime_0
   - first:
-      213: 4859821340145206559
-    second: horizontal_movement_1
+      213: 2095853173649826607
+    second: idleslime_1
   - first:
-      213: -1080037113055565038
-    second: horizontal_movement_2
+      213: -5386217913424182511
+    second: idleslime_2
   - first:
-      213: 4191938048533137499
-    second: horizontal_movement_3
+      213: 3719269263475758490
+    second: idleslime_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -95,7 +95,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -107,7 +107,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -122,7 +122,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: horizontal_movement_0
+      name: idleslime_0
       rect:
         serializedVersion: 2
         x: 0
@@ -136,14 +136,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55e2c181f95de55a0800000000000000
-      internalID: -6530547530359624107
+      spriteID: c68f5f0e2f6201260800000000000000
+      internalID: 7066190639942465644
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: horizontal_movement_1
+      name: idleslime_1
       rect:
         serializedVersion: 2
         x: 16
@@ -157,14 +157,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f15c73ba2cd817340800000000000000
-      internalID: 4859821340145206559
+      spriteID: f23e5cc6b57f51d10800000000000000
+      internalID: 2095853173649826607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: horizontal_movement_2
+      name: idleslime_2
       rect:
         serializedVersion: 2
         x: 32
@@ -178,14 +178,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21ba51cc7ffe201f0800000000000000
-      internalID: -1080037113055565038
+      spriteID: 113818b585f4045b0800000000000000
+      internalID: -5386217913424182511
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: horizontal_movement_3
+      name: idleslime_3
       rect:
         serializedVersion: 2
         x: 48
@@ -199,8 +199,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b58034ff171cc2a30800000000000000
-      internalID: 4191938048533137499
+      spriteID: a95508980bf7d9330800000000000000
+      internalID: 3719269263475758490
       vertices: []
       indices: 
       edges: []
