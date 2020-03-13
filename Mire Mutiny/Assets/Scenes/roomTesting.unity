@@ -395,6 +395,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   anim: {fileID: 0}
+  bulletOffset: {x: 0, y: 0, z: 0}
+  BulletPrefab: {fileID: 1238629129}
+  BulletPrefabClone: {fileID: 1238629129}
+  shotSpeed: 15
 --- !u!1001 &1260084640
 PrefabInstance:
   m_ObjectHideFlags: 0
