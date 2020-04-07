@@ -150,11 +150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ebb9cb9b53f3fb4ca3c27b0aa5ebf2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 99
-  height: 99
+  width: 50
+  height: 50
   smoothness: 4
-  seed: Arden
-  useRandomSeed: 0
+  seed: 
+  useRandomSeed: 1
   randomFillPercent: 45
   GroundPrefab: {fileID: 1351340335}
   GroundPrefabClone: {fileID: 1351340335}
