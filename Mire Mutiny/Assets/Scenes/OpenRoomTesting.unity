@@ -150,10 +150,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ebb9cb9b53f3fb4ca3c27b0aa5ebf2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 50
-  height: 50
+  width: 99
+  height: 99
   smoothness: 4
-  seed: Luke
+  seed: Arden
   useRandomSeed: 0
   randomFillPercent: 45
   GroundPrefab: {fileID: 1351340335}
