@@ -153,7 +153,7 @@ MonoBehaviour:
   width: 50
   height: 50
   smoothness: 4
-  seed: Arden
+  seed: 
   useRandomSeed: 0
   randomFillPercent: 45
   GroundPrefab: {fileID: 1351340335}
