@@ -22,6 +22,8 @@ public class MapGenerator : MonoBehaviour
   public GameObject GroundPrefabClone;
   public GameObject MapGen;
 
+  private bool smooth = false;
+
   int [,] map;
 
   void Start() {
@@ -32,7 +34,10 @@ public class MapGenerator : MonoBehaviour
     map = new int[width,height];
     RandomFillMap();
     for (int i = 0; i < 5; i ++) {
+      if (smooth == false) {
         SmoothMap();
+        smooth = true;
+        }
       }
     }
 
@@ -66,7 +71,7 @@ public class MapGenerator : MonoBehaviour
             map[x,y] = 0;
       }
     }
-    OnDrawMap();
+            OnDrawMap();
   }
   int GetSurroundingWallCount(int gridX, int gridY) {
     int wallCount = 0;
