@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+      speed = speed/50;
       anim = GetComponent<Animator>();
     }
 
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
       if (shotSpeed > 0) {
         shotSpeed --;
       }
+//      Debug.Log(Time.deltaTime);
     }
     void FixedUpdate()
     {
@@ -33,8 +35,8 @@ public class Player : MonoBehaviour
         Horizontal = Input.GetAxis("Horizontal");
         Vertical = Input.GetAxis("Vertical");
 
-      transform.Translate(Vector3.up * Time.deltaTime * speed * Input.GetAxis("Vertical"));
-      transform.Translate(Vector3.right * Time.deltaTime * speed * Input.GetAxis("Horizontal"));
+      transform.Translate(Vector3.up * speed * Input.GetAxis("Vertical"));
+      transform.Translate(Vector3.right * speed * Input.GetAxis("Horizontal"));
 
 
       if (Input.GetMouseButtonDown(0) && shotSpeed == 0) {
