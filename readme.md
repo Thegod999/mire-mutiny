@@ -1,6 +1,6 @@
 # Mire Mutiny
 
-Foobar is a Python library for dealing with word pluralization.
+Mire Mutiny is fun roguelike with a slime! It is made with Unity 2019.2.4f1 and will be worked on periodically.
 
 ## Setup
 
