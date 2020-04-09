@@ -17,7 +17,7 @@ Once cloned, just import the project into Unity Hub and launch it from there.
 ## Contributing
 At the moment, this is a personal project, but feel free to fork it and build upon it as you wish!
 
-Please make sure to update follow the MIT License.
+Please make sure to follow the MIT License.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
