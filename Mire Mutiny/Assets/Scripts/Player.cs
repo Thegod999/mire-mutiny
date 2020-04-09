@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
 {
   public float speed;
   public Animator anim;
-  private float Vertical;
-  private float Horizontal;
+  public float Vertical;
+  public float Horizontal;
 
   public Vector3 bulletOffset = new Vector3(0, 0, 0);
 	public GameObject BulletPrefab;
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     {
       anim.SetFloat("AxisVertical", Vertical);
       anim.SetFloat("AxisHorizontal", Horizontal);
-      if (Input.GetKeyDown(KeyCode.A)) {
+      if (Input.GetKey(KeyCode.A)) {
         Horizontal = -1;
         Debug.Log(Horizontal);
       }
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
         Horizontal = 0;
         Debug.Log(Horizontal);
       }
-      if (Input.GetKeyDown(KeyCode.D)) {
+      if (Input.GetKey(KeyCode.D)) {
         Horizontal = 1;
         Debug.Log(Horizontal);
       }
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         Horizontal = 0;
         Debug.Log(Horizontal);
       }
-      if (Input.GetKeyDown(KeyCode.W)) {
+      if (Input.GetKey(KeyCode.W)) {
         Vertical = 1;
         Debug.Log(Vertical);
       }
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
         Vertical = 0;
         Debug.Log(Vertical);
       }
-      if (Input.GetKeyDown(KeyCode.S)) {
+      if (Input.GetKey(KeyCode.S)) {
         Vertical = -1;
         Debug.Log(Vertical);
       }
