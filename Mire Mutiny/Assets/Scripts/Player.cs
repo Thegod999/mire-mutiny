@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+      Horizontal = 0;
+      Vertical = 0;
       speed = speed/50;
       anim = GetComponent<Animator>();
     }
@@ -32,8 +34,40 @@ public class Player : MonoBehaviour
     {
       anim.SetFloat("AxisVertical", Vertical);
       anim.SetFloat("AxisHorizontal", Horizontal);
-        Horizontal = Input.GetAxis("Horizontal");
-        Vertical = Input.GetAxis("Vertical");
+      if (Input.GetKeyDown(KeyCode.A)) {
+        Horizontal = -1;
+        Debug.Log(Horizontal);
+      }
+      if (Input.GetKeyUp(KeyCode.A)) {
+        Horizontal = 0;
+        Debug.Log(Horizontal);
+      }
+      if (Input.GetKeyDown(KeyCode.D)) {
+        Horizontal = 1;
+        Debug.Log(Horizontal);
+      }
+      if (Input.GetKeyUp(KeyCode.D)) {
+        Horizontal = 0;
+        Debug.Log(Horizontal);
+      }
+      if (Input.GetKeyDown(KeyCode.W)) {
+        Vertical = 1;
+        Debug.Log(Vertical);
+      }
+      if (Input.GetKeyUp(KeyCode.W)) {
+        Vertical = 0;
+        Debug.Log(Vertical);
+      }
+      if (Input.GetKeyDown(KeyCode.S)) {
+        Vertical = -1;
+        Debug.Log(Vertical);
+      }
+      if (Input.GetKeyUp(KeyCode.S)) {
+        Vertical = 0;
+        Debug.Log(Vertical);
+      }
+//        Horizontal = Input.GetAxis("Horizontal");
+//        Vertical = Input.GetAxis("Vertical");
 
       transform.Translate(Vector3.up * speed * Input.GetAxis("Vertical"));
       transform.Translate(Vector3.right * speed * Input.GetAxis("Horizontal"));
