@@ -21,12 +21,15 @@ public class MapGenerator : MonoBehaviour
   public GameObject GroundPrefab;
   public GameObject GroundPrefabClone;
   public GameObject MapGen;
+  private float RandValue;
 
   private bool smooth = false;
 
   int [,] map;
 
   void Start() {
+    RandValue = UnityEngine.Random.Range(-214748364.0f, 214748364.0f);
+    seed = RandValue.ToString();
     GenerateMap();
     }
 
@@ -102,5 +105,10 @@ public class MapGenerator : MonoBehaviour
         }
       }
     }
+  }
+  void setup(){
+    RandValue = UnityEngine.Random.Range(-214748364.0f, 214748364.0f);
+    seed = RandValue.ToString();
+//    Debug.Log(RandValue);
   }
 }
