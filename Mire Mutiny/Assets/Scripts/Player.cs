@@ -28,6 +28,22 @@ public class Player : MonoBehaviour
       if (shotSpeed > 0) {
         shotSpeed --;
       }
+      if (Input.GetKeyUp(KeyCode.A)) {
+        Horizontal = 0;
+        Debug.Log(Horizontal);
+      }
+      if (Input.GetKeyUp(KeyCode.D)) {
+        Horizontal = 0;
+        Debug.Log(Horizontal);
+      }
+      if (Input.GetKeyUp(KeyCode.W)) {
+        Vertical = 0;
+        Debug.Log(Vertical);
+      }
+      if (Input.GetKeyUp(KeyCode.S)) {
+        Vertical = 0;
+        Debug.Log(Vertical);
+      }
 //      Debug.Log(Time.deltaTime);
     }
     void FixedUpdate()
