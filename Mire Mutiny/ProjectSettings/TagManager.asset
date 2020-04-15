@@ -8,6 +8,7 @@ TagManager:
   - SpawnPoint
   - Environment
   - MapGen
+  - Wall
   layers:
   - Default
   - TransparentFX
