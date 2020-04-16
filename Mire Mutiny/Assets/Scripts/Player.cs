@@ -106,37 +106,45 @@ public class Player : MonoBehaviour
     {
       anim.SetFloat("AxisVertical", Vertical);
       anim.SetFloat("AxisHorizontal", Horizontal);
+      anim.SetBool("moveUpRight", moveUpRight);
+      anim.SetBool("moveUp", moveUp);
+      anim.SetBool("moveUpLeft", moveUpLeft);
+      anim.SetBool("moveDownRight", moveDownRight);
+      anim.SetBool("moveDown", moveDown);
+      anim.SetBool("moveDownLeft", moveDownLeft);
+      anim.SetBool("moveLeft", moveLeft);
+      anim.SetBool("moveRight", moveRight);
       if (Input.GetKey(KeyCode.A)) {
         Horizontal = -1;
         Debug.Log(Horizontal);
       }
       if (Input.GetKeyUp(KeyCode.A)) {
         Horizontal = 0;
-        Debug.Log(Horizontal);
+//        Debug.Log(Horizontal);
       }
       if (Input.GetKey(KeyCode.D)) {
         Horizontal = 1;
-        Debug.Log(Horizontal);
+//        Debug.Log(Horizontal);
       }
       if (Input.GetKeyUp(KeyCode.D)) {
         Horizontal = 0;
-        Debug.Log(Horizontal);
+//        Debug.Log(Horizontal);
       }
       if (Input.GetKey(KeyCode.W)) {
         Vertical = 1;
-        Debug.Log(Vertical);
+//        Debug.Log(Vertical);
       }
       if (Input.GetKeyUp(KeyCode.W)) {
         Vertical = 0;
-        Debug.Log(Vertical);
+//        Debug.Log(Vertical);
       }
       if (Input.GetKey(KeyCode.S)) {
         Vertical = -1;
-        Debug.Log(Vertical);
+//        Debug.Log(Vertical);
       }
       if (Input.GetKeyUp(KeyCode.S)) {
         Vertical = 0;
-        Debug.Log(Vertical);
+//        Debug.Log(Vertical);
       }
 //        Horizontal = Input.GetAxis("Horizontal");
 //        Vertical = Input.GetAxis("Vertical");
