@@ -38,19 +38,19 @@ public class Player : MonoBehaviour
       }
       if (Input.GetKeyUp(KeyCode.A)) {
         Horizontal = 0;
-        Debug.Log(Horizontal);
+//        Debug.Log(Horizontal);
       }
       if (Input.GetKeyUp(KeyCode.D)) {
         Horizontal = 0;
-        Debug.Log(Horizontal);
+//        Debug.Log(Horizontal);
       }
       if (Input.GetKeyUp(KeyCode.W)) {
         Vertical = 0;
-        Debug.Log(Vertical);
+//        Debug.Log(Vertical);
       }
       if (Input.GetKeyUp(KeyCode.S)) {
         Vertical = 0;
-        Debug.Log(Vertical);
+  //      Debug.Log(Vertical);
       }
       if (Horizontal == -1 && Vertical == 0) {
         moveLeft = true;
@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
       anim.SetBool("moveRight", moveRight);
       if (Input.GetKey(KeyCode.A)) {
         Horizontal = -1;
-        Debug.Log(Horizontal);
+//        Debug.Log(Horizontal);
       }
       if (Input.GetKeyUp(KeyCode.A)) {
         Horizontal = 0;
