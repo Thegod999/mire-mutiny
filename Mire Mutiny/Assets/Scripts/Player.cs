@@ -8,6 +8,14 @@ public class Player : MonoBehaviour
   public Animator anim;
   public float Vertical;
   public float Horizontal;
+  public bool moveUp;
+  public bool moveDown;
+  public bool moveLeft;
+  public bool moveRight;
+  public bool moveUpRight;
+  public bool moveUpLeft;
+  public bool moveDownRight;
+  public bool moveDownLeft;
 
   public Vector3 bulletOffset = new Vector3(0, 0, 0);
 	public GameObject BulletPrefab;
@@ -43,6 +51,54 @@ public class Player : MonoBehaviour
       if (Input.GetKeyUp(KeyCode.S)) {
         Vertical = 0;
         Debug.Log(Vertical);
+      }
+      if (Horizontal == -1 && Vertical == 0) {
+        moveLeft = true;
+      }
+      else{
+        moveLeft = false;
+      }
+      if (Horizontal == 1 && Vertical == 0) {
+        moveRight = true;
+      }
+      else{
+        moveRight = false;
+      }
+      if (Vertical == 1 && Horizontal == 0) {
+        moveUp = true;
+      }
+      else{
+        moveUp = false;
+      }
+      if (Vertical == -1  && Horizontal == 0) {
+        moveDown = true;
+      }
+      else{
+        moveDown = false;
+      }
+      if (Vertical == 1  && Horizontal == 1) {
+        moveUpRight = true;
+      }
+      else{
+        moveUpRight = false;
+      }
+      if (Vertical == 1  && Horizontal == -1) {
+        moveUpLeft = true;
+      }
+      else{
+        moveUpLeft = false;
+      }
+      if (Vertical == -1  && Horizontal == 1) {
+        moveDownRight = true;
+      }
+      else{
+        moveDownRight = false;
+      }
+      if (Vertical == -1  && Horizontal == -1) {
+        moveDownLeft = true;
+      }
+      else{
+        moveDownLeft = false;
       }
 //      Debug.Log(Time.deltaTime);
     }
