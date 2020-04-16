@@ -4,7 +4,7 @@ Mire Mutiny is fun roguelike with a slime! It is made with Unity 2019.2.4f1 and 
 
 ## Setup
 
-Install Unity 2019.2.4f1 from [Here](https://unity3d.com/get-unity/download/archive) and clone the repository into a project folder.
+Install Unity 2019.3.4f1 from [Here](https://unity3d.com/get-unity/download/archive) and clone the repository into a project folder.
 
 ```bash
 git clone https://github.com/Thegod999/mire-mutiny.git mire-mutiny
