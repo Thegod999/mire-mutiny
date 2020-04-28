@@ -115,12 +115,20 @@ public class Player : MonoBehaviour
       else{
         moveDownLeft = false;
       }
+      Vector2 shootDir = pointerPosition - RigidBoi2D.position;
+      float pointerAngle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg -90f;
+      if (Input.GetMouseButtonDown(0) && shotSpeed == 0) {
+//        			Vector3 offset = transform.rotation * bulletOffset;
+              GameObject Bullet = (GameObject)Instantiate(BulletPrefab, transform.position, Quaternion.Euler(0, 0, pointerAngle));
+              shotSpeed = shotSpeedReturn;
+              Debug.Log("clickDown");
+            }
 //      Debug.Log(Time.deltaTime);
     }
     void FixedUpdate()
     {
-      Vector2 shootDir = pointerPosition - RigidBoi2D.position;
-      float pointerAngle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg -90f;
+//      Vector2 shootDir = pointerPosition - RigidBoi2D.position;
+//      float pointerAngle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg -90f;
 //      Debug.Log(pointerAngle);
       anim.SetFloat("AxisVertical", Vertical);
       anim.SetFloat("AxisHorizontal", Horizontal);
@@ -169,12 +177,5 @@ public class Player : MonoBehaviour
 
       transform.Translate(Vector3.up * speed * Input.GetAxis("Vertical"));
       transform.Translate(Vector3.right * speed * Input.GetAxis("Horizontal"));
-
-
-      if (Input.GetMouseButtonDown(0) && shotSpeed == 0) {
-//        			Vector3 offset = transform.rotation * bulletOffset;
-        			GameObject Bullet = (GameObject)Instantiate(BulletPrefab, transform.position, Quaternion.Euler(0, 0, pointerAngle));
-        			shotSpeed = shotSpeedReturn;
-        		}
       }
 }
