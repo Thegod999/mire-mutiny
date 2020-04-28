@@ -10,6 +10,8 @@ public class MapGenerator : MonoBehaviour
   [Range(0,100)]
   public int height;
 
+  public int TotalStrayEnemyCount;
+  public int TotalEnemyCampCount;
   public int smoothness;
   [Range(1,100)]
   public int roomThresholdSize;
@@ -31,10 +33,13 @@ public class MapGenerator : MonoBehaviour
 
   private bool smooth = false;
   private bool drawMap = false;
-
-  private GameObject[] environment;
+  private List<int> SpawnX = new List<int>();
+  private List<int> SpawnY = new List<int>();
+  private List<int> EnemyX = new List<int>();
+  private List<int> EnemyY = new List<int>();
 
   int [,] map;
+  public Sprite[] masks;
 
   void Start() {
     RandValue = UnityEngine.Random.Range(-214748364.0f, 214748364.0f);
@@ -67,7 +72,7 @@ public class MapGenerator : MonoBehaviour
 		foreach (List<Coord> wallRegion in wallRegions) {
 			if (wallRegion.Count < wallThresholdSize) {
 				foreach (Coord tile in wallRegion) {
-					map[tile.tileX,tile.tileY] = 0;
+					map[tile.tileX,tile.tileY] = 2;
 				}
 			}
 		}
@@ -147,9 +152,12 @@ public class MapGenerator : MonoBehaviour
   					}
   				}
   			}
-
+      if (!possibleConnectionFound) {
+        break;
+      }
   		if (possibleConnectionFound && !forceAccessibilityFromMainRoom) {
   			CreatePassage(bestRoomA, bestRoomB, bestTileA, bestTileB);
+        ConnectClosestRooms(allRooms, true);
   		}
   	}
       if (possibleConnectionFound && !forceAccessibilityFromMainRoom) {
@@ -179,11 +187,12 @@ public class MapGenerator : MonoBehaviour
   					int drawY = c.tileY + y;
   					if (IsInMapRange(drawX, drawY)) {
   						map[drawX,drawY] = 0;
-  					}
-  				}
-  			}
-  		}
-  	}
+            }
+  		    }
+  	    }
+      }
+    }
+
 
     List<Coord> GetLine(Coord from, Coord to) {
   		List<Coord> line = new List<Coord> ();
@@ -376,6 +385,7 @@ public class MapGenerator : MonoBehaviour
 						if (x == tile.tileX || y == tile.tileY) {
 							if (map[x,y] == 1) {
 								edgeTiles.Add(tile);
+                map[x,y] = 2;
 							}
 						}
 					}
@@ -416,13 +426,43 @@ public class MapGenerator : MonoBehaviour
         for (int y = 0; y < height; y ++) {
           float posX = -width/2 + x + 0.5f;
           float posY = -height/2 + y + 0.5f;
-          if (map[x,y] == 1) {
-        	GameObject Ground = (GameObject)Instantiate(GroundPrefab, transform.position = new Vector2(posX, posY), Quaternion.identity);
+
+          if (map[x,y] != 0 && map[x,y] != 2) {
+            GameObject Ground = (GameObject)Instantiate(GroundPrefab, transform.position = new Vector2(posX, posY), Quaternion.identity);
+            Ground.GetComponent<SpriteRenderer>().color = Color.black;
+          }
+          if (map[x,y] == 2) {
+            GameObject Ground = (GameObject)Instantiate(GroundPrefab, transform.position = new Vector2(posX, posY), Quaternion.identity);
+            Ground.GetComponent<SpriteRenderer>().color = Color.white;
           }
         }
       }
+      SpawnPoints();
     }
 }
+  void SpawnPoints() {
+    for (int x = 0; x < width; x ++) {
+      for (int y = 0; y < height; y ++) {
+        if (map[x,y] == 2) {
+          SpawnX.Add(x);
+          SpawnY.Add(y);
+        }
+        if (map[x,y] == 0) {
+          EnemyX.Add(x);
+          EnemyY.Add(y);
+        }
+      }
+    }
+    int i = UnityEngine.Random.Range (0, SpawnX.Count);
+    float posX = -width/2 + SpawnX[i] + 0.5f;
+    float posY = -height/2 + SpawnY[i] + 0.5f;
+    GameObject Ground = (GameObject)Instantiate(GroundPrefab, transform.position = new Vector2(posX, posY), Quaternion.identity);
+    Ground.GetComponent<SpriteRenderer>().color = Color.red;
+
+    for (int ) {
+
+    }
+  }
 
   void setup(){
     RandValue = UnityEngine.Random.Range(-214748364.0f, 214748364.0f);
