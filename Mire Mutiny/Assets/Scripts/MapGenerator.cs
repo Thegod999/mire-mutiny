@@ -6,12 +6,17 @@ using System;
 public class MapGenerator : MonoBehaviour
 {
   [Range(0,100)]
-  public int width;
+  public int minWidth;
   [Range(0,100)]
+  public int maxWidth;
+  [Range(0,100)]
+  public int minHeight;
+  [Range(0,100)]
+  public int maxHeight;
+
+  public int width;
   public int height;
 
-  public int TotalStrayEnemyCount;
-  public int TotalEnemyCampCount;
   public int smoothness;
   [Range(1,100)]
   public int roomThresholdSize;
@@ -33,15 +38,13 @@ public class MapGenerator : MonoBehaviour
 
   private bool smooth = false;
   private bool drawMap = false;
-  private List<int> SpawnX = new List<int>();
-  private List<int> SpawnY = new List<int>();
-  private List<int> EnemyX = new List<int>();
-  private List<int> EnemyY = new List<int>();
 
   public int [,] map;
 
 
   void Start() {
+    width = UnityEngine.Random.Range(minWidth, maxWidth);
+    height = UnityEngine.Random.Range(minHeight, maxHeight);
     RandValue = UnityEngine.Random.Range(-214748364.0f, 214748364.0f);
     seed = RandValue.ToString();
     GenerateMap();
@@ -377,7 +380,6 @@ public class MapGenerator : MonoBehaviour
 			tiles = roomTiles;
 			roomSize = tiles.Count;
 			connectedRooms = new List<Room>();
-
 			edgeTiles = new List<Coord>();
 			foreach (Coord tile in tiles) {
 				for (int x = tile.tileX-1; x <= tile.tileX+1; x++) {
@@ -425,7 +427,6 @@ public class MapGenerator : MonoBehaviour
         for (int y = 0; y < height; y ++) {
           float posX = -width/2 + x + 0.5f;
           float posY = -height/2 + y + 0.5f;
-
           if (map[x,y] != 0 && map[x,y] != 2) {
             GameObject Ground = (GameObject)Instantiate(GroundPrefab, transform.position = new Vector2(posX, posY), Quaternion.identity);
             Ground.GetComponent<SpriteRenderer>().color = Color.black;
@@ -434,29 +435,9 @@ public class MapGenerator : MonoBehaviour
           }
         }
       }
-      SpawnPoints();
     }
 }
-  void SpawnPoints() {
-    for (int x = 0; x < width; x ++) {
-      for (int y = 0; y < height; y ++) {
-        if (map[x,y] == 2) {
-          SpawnX.Add(x);
-          SpawnY.Add(y);
-        }
-        if (map[x,y] == 0) {
-          EnemyX.Add(x);
-          EnemyY.Add(y);
-        }
-      }
-    }
-    int i = UnityEngine.Random.Range (0, SpawnX.Count);
-    float posX = -width/2 + SpawnX[i] + 0.5f;
-    float posY = -height/2 + SpawnY[i] + 0.5f;
-    GameObject Ground = (GameObject)Instantiate(GroundPrefab, transform.position = new Vector2(posX, posY), Quaternion.identity);
-    Ground.GetComponent<SpriteRenderer>().color = Color.red;
 
-  }
 
   void setup(){
     RandValue = UnityEngine.Random.Range(-214748364.0f, 214748364.0f);

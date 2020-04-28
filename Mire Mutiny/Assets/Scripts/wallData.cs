@@ -16,7 +16,7 @@ public class wallData : MonoBehaviour
       }
     }
 
-    void CheckSurroundingWallCount() {
+    public void CheckSurroundingWallCount() {
       for (int x = mapX-1; x <= mapX+1; x++) {
         for (int y = mapY-1; y <= mapY+1; y++) {
           if (mapData.map[x,y] == 0) {
