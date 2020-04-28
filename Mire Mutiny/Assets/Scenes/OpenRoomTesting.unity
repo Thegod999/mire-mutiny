@@ -139,6 +139,11 @@ PrefabInstance:
       propertyPath: BulletPrefab
       value: 
       objectReference: {fileID: 805976672}
+    - target: {fileID: 3029473314548818500, guid: 94d07ad063113f84392a371cc50e3f49,
+        type: 3}
+      propertyPath: shotSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3029473315154865528, guid: 94d07ad063113f84392a371cc50e3f49,
         type: 3}
       propertyPath: m_Name
@@ -147,12 +152,12 @@ PrefabInstance:
     - target: {fileID: 3029473315154865531, guid: 94d07ad063113f84392a371cc50e3f49,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.1731105
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 3029473315154865531, guid: 94d07ad063113f84392a371cc50e3f49,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.14507544
+      value: 21.9
       objectReference: {fileID: 0}
     - target: {fileID: 3029473315154865531, guid: 94d07ad063113f84392a371cc50e3f49,
         type: 3}
@@ -208,6 +213,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2314813302805917637, guid: 0a3d1ac33615c2e45baaef8d3e55c5f8,
+        type: 3}
+      propertyPath: speed
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 4920980630818886233, guid: 0a3d1ac33615c2e45baaef8d3e55c5f8,
         type: 3}
       propertyPath: m_LocalPosition.x
