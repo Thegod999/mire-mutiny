@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+  public Camera cameraInterface;
   public float speed;
   public Animator anim;
   public float Vertical;
@@ -16,15 +17,22 @@ public class Player : MonoBehaviour
   public bool moveUpLeft;
   public bool moveDownRight;
   public bool moveDownLeft;
+  public Rigidbody2D RigidBoi2D;
 
   public Vector3 bulletOffset = new Vector3(0, 0, 0);
 	public GameObject BulletPrefab;
 	public GameObject BulletPrefabClone;
 	public float shotSpeed = 15f;
+  private float shotSpeedReturn;
+//  public float pointerAngle;
+  Vector2 pointerPosition;
+  Vector2 moveLoc;
 
     // Start is called before the first frame update
     void Start()
     {
+//     float pointerAngle = Mathf.Atan2(moveLoc.y, move.x);
+      shotSpeedReturn = shotSpeed;
       Horizontal = 0;
       Vertical = 0;
       speed = speed/50;
@@ -33,6 +41,13 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+     pointerPosition = cameraInterface.ScreenToWorldPoint(Input.mousePosition);
+      moveLoc.x = Input.GetAxisRaw("Horizontal");
+      moveLoc.y = Input.GetAxisRaw("Vertical");
+
+//      pointerAngle = Quaternion.LookRotation(pointerPosition);
+//      Debug.Log(pointerPosition);
+//        Debug.Log(pointerAngle);
       if (shotSpeed > 0) {
         shotSpeed --;
       }
@@ -104,6 +119,9 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
+      Vector2 shootDir = pointerPosition - RigidBoi2D.position;
+      float pointerAngle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg -90f;
+//      Debug.Log(pointerAngle);
       anim.SetFloat("AxisVertical", Vertical);
       anim.SetFloat("AxisHorizontal", Horizontal);
       anim.SetBool("moveUpRight", moveUpRight);
@@ -154,9 +172,9 @@ public class Player : MonoBehaviour
 
 
       if (Input.GetMouseButtonDown(0) && shotSpeed == 0) {
-        			Vector3 offset = transform.rotation * bulletOffset;
-        			GameObject Bullet = (GameObject)Instantiate(BulletPrefab, transform.position + offset, transform.rotation);
-        			shotSpeed = 15f;
+//        			Vector3 offset = transform.rotation * bulletOffset;
+        			GameObject Bullet = (GameObject)Instantiate(BulletPrefab, transform.position, Quaternion.Euler(0, 0, pointerAngle));
+        			shotSpeed = shotSpeedReturn;
         		}
       }
 }
