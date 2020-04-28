@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
 //        			Vector3 offset = transform.rotation * bulletOffset;
               GameObject Bullet = (GameObject)Instantiate(BulletPrefab, transform.position, Quaternion.Euler(0, 0, pointerAngle));
               shotSpeed = shotSpeedReturn;
-              Debug.Log("clickDown");
+//              Debug.Log("clickDown");
             }
 //      Debug.Log(Time.deltaTime);
     }
