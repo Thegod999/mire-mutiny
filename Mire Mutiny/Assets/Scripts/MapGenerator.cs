@@ -38,8 +38,8 @@ public class MapGenerator : MonoBehaviour
   private List<int> EnemyX = new List<int>();
   private List<int> EnemyY = new List<int>();
 
-  int [,] map;
-  public Sprite[] masks;
+  public int [,] map;
+
 
   void Start() {
     RandValue = UnityEngine.Random.Range(-214748364.0f, 214748364.0f);
@@ -385,7 +385,6 @@ public class MapGenerator : MonoBehaviour
 						if (x == tile.tileX || y == tile.tileY) {
 							if (map[x,y] == 1) {
 								edgeTiles.Add(tile);
-                map[x,y] = 2;
 							}
 						}
 					}
@@ -430,10 +429,8 @@ public class MapGenerator : MonoBehaviour
           if (map[x,y] != 0 && map[x,y] != 2) {
             GameObject Ground = (GameObject)Instantiate(GroundPrefab, transform.position = new Vector2(posX, posY), Quaternion.identity);
             Ground.GetComponent<SpriteRenderer>().color = Color.black;
-          }
-          if (map[x,y] == 2) {
-            GameObject Ground = (GameObject)Instantiate(GroundPrefab, transform.position = new Vector2(posX, posY), Quaternion.identity);
-            Ground.GetComponent<SpriteRenderer>().color = Color.white;
+            Ground.GetComponent<wallData>().mapX = x;
+            Ground.GetComponent<wallData>().mapY = y;
           }
         }
       }
@@ -459,9 +456,6 @@ public class MapGenerator : MonoBehaviour
     GameObject Ground = (GameObject)Instantiate(GroundPrefab, transform.position = new Vector2(posX, posY), Quaternion.identity);
     Ground.GetComponent<SpriteRenderer>().color = Color.red;
 
-    for (int ) {
-
-    }
   }
 
   void setup(){
