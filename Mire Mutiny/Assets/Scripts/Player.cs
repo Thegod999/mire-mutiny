@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Player : MonoBehaviour
 {
@@ -140,6 +142,10 @@ public class Player : MonoBehaviour
       anim.SetBool("moveDownLeft", moveDownLeft);
       anim.SetBool("moveLeft", moveLeft);
       anim.SetBool("moveRight", moveRight);
+      if (Input.GetKeyUp(KeyCode.R)) {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+      }
       if (Input.GetKey(KeyCode.A)) {
         Horizontal = -1;
 //        Debug.Log(Horizontal);
