@@ -24,14 +24,14 @@ public class enemyManager : MonoBehaviour
   private List<int> EnemyX = new List<int>();
   private List<int> EnemyY = new List<int>();
 
+  public List<int[,]> EnemyCampLoc = new List<int[,]>();
+  public List<int[,]> EnemyStrayLoc = new List<int[,]>();
+
 
     void Start() {
       TotalEnemyCampCount = Random.Range(minTotalEnemyCampCount, maxTotalEnemyCampCount);
       TotalStrayEnemyCount = Random.Range(minTotalStrayEnemyCount, maxTotalStrayEnemyCount);
-    }
 
-    void FixedUpdate()
-    {
     for (int x = 0; x < mapData.width; x ++) {
       for (int y = 0; y < mapData.height; y ++) {
         if (mapData.map[x,y] == 0) {
@@ -46,6 +46,7 @@ public class enemyManager : MonoBehaviour
       float posY = -mapData.height/2 + EnemyY[i] + 0.5f;
       GameObject EnemySpawns = (GameObject)Instantiate(EnemySpawnsPrefab, transform.position = new Vector2(posX, posY), Quaternion.identity);
       EnemySpawns.GetComponent<SpriteRenderer>().color = Color.red;
+      EnemySpawns.GetComponent<enemySpawn>().IsStray = true;
       }
 
     for (int GetCampCount = 0; GetCampCount <= TotalEnemyCampCount; GetCampCount ++) {
@@ -55,6 +56,5 @@ public class enemyManager : MonoBehaviour
       GameObject EnemySpawns = (GameObject)Instantiate(EnemySpawnsPrefab, transform.position = new Vector2(ECX, ECY), Quaternion.identity);
       EnemySpawns.GetComponent<SpriteRenderer>().color = Color.blue;
     }
-    gameObject.SetActive(false);
   }
 }

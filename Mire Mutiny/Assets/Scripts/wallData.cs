@@ -10,19 +10,15 @@ public class wallData : MonoBehaviour
     public int surroundingWallCount = 8;
     void Start()
     {
-      CheckSurroundingWallCount();
-      if (surroundingWallCount < 8) {
-        this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-      }
-    }
-
-    public void CheckSurroundingWallCount() {
       for (int x = mapX-1; x <= mapX+1; x++) {
         for (int y = mapY-1; y <= mapY+1; y++) {
           if (mapData.map[x,y] == 0) {
             surroundingWallCount --;
           }
         }
+      }
+      if (surroundingWallCount < 8) {
+        this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
       }
     }
 }

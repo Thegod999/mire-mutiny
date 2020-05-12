@@ -37,7 +37,6 @@ public class MapGenerator : MonoBehaviour
   private float RandValue;
 
   private bool smooth = false;
-  private bool drawMap = false;
 
   public int [,] map;
 
@@ -48,13 +47,9 @@ public class MapGenerator : MonoBehaviour
     RandValue = UnityEngine.Random.Range(-214748364.0f, 214748364.0f);
     seed = RandValue.ToString();
     GenerateMap();
-    }
-  void FixedUpdate() {
-    if (drawMap == false) {
-    drawMap = true;
     OnDrawMap();
     }
-  }
+
 
   void GenerateMap() {
     map = new int[width,height];

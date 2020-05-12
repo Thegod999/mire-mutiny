@@ -12,11 +12,11 @@ public class spawnManager : MonoBehaviour
     public GameObject Spawns;
     public GameObject SpawnPrefab;
 
-    void FixedUpdate()
+    void Start()
     {
     wallData[] wall = Object.FindObjectsOfType<wallData>();
     foreach (wallData w in wall) {
-      if (w.surroundingWallCount < 7) {
+      if (w.surroundingWallCount < 8) {
         SpawnX.Add(w.mapX);
         SpawnY.Add(w.mapY);
       }
@@ -30,6 +30,5 @@ public class spawnManager : MonoBehaviour
     SpawnPointX = SpawnX[i];
     SpawnPointY = SpawnY[i];
 
-    gameObject.SetActive(false);
   }
 }
