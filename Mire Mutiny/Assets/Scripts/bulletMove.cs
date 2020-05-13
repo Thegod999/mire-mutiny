@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bulletMove : MonoBehaviour
 {
-    public float speed = PlayerPrefs.GetFloat("Shot_Quickness", 40);
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {

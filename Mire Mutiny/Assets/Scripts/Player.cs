@@ -185,6 +185,9 @@ public class Player : MonoBehaviour
       if (Input.GetKey(KeyCode.M)) {
         PlayerPrefs.DeleteAll();
       }
+      if (Input.GetKey(KeyCode.L)) {
+        Application.Quit();
+      }
 //        Horizontal = Input.GetAxis("Horizontal");
 //        Vertical = Input.GetAxis("Vertical");
 
