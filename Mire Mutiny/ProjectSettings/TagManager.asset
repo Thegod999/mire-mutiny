@@ -9,6 +9,7 @@ TagManager:
   - Environment
   - MapGen
   - Wall
+  - playerCharacter
   layers:
   - Default
   - TransparentFX

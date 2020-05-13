@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
   public Camera cameraInterface;
   public float speed;
+  public float speedRemoval = 0.02f;
   public Animator anim;
   public float Vertical;
   public float Horizontal;
@@ -24,7 +25,7 @@ public class Player : MonoBehaviour
   public Vector3 bulletOffset = new Vector3(0, 0, 0);
 	public GameObject BulletPrefab;
 	public GameObject BulletPrefabClone;
-	public float shotSpeed = 15f;
+	public float shotSpeed = 5;
   private float shotSpeedReturn;
 //  public float pointerAngle;
   Vector2 pointerPosition;
@@ -34,16 +35,19 @@ public class Player : MonoBehaviour
     void Start()
     {
 //     float pointerAngle = Mathf.Atan2(moveLoc.y, move.x);
-      shotSpeedReturn = shotSpeed;
+      shotSpeed = PlayerPrefs.GetFloat("Shot_Speed", 30);
+      shotSpeedReturn = PlayerPrefs.GetFloat("Shot_Speed", 30);
       Horizontal = 0;
       Vertical = 0;
-      speed = speed/50;
+//      speed = speed/50;
       anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update() {
-     pointerPosition = cameraInterface.ScreenToWorldPoint(Input.mousePosition);
+      speed = PlayerPrefs.GetFloat("Literal_Speed", 5);
+      shotSpeedReturn = PlayerPrefs.GetFloat("Shot_Speed", 30);
+      pointerPosition = cameraInterface.ScreenToWorldPoint(Input.mousePosition);
       moveLoc.x = Input.GetAxisRaw("Horizontal");
       moveLoc.y = Input.GetAxisRaw("Vertical");
 
@@ -178,10 +182,14 @@ public class Player : MonoBehaviour
         Vertical = 0;
 //        Debug.Log(Vertical);
       }
+      if (Input.GetKey(KeyCode.M)) {
+        PlayerPrefs.DeleteAll();
+      }
 //        Horizontal = Input.GetAxis("Horizontal");
 //        Vertical = Input.GetAxis("Vertical");
 
-      transform.Translate(Vector3.up * speed * Input.GetAxis("Vertical"));
-      transform.Translate(Vector3.right * speed * Input.GetAxis("Horizontal"));
+      transform.Translate(Vector3.up * speed * speedRemoval‬ * Input.GetAxis("Vertical"));
+      transform.Translate(Vector3.right * speed * speedRemoval‬ * Input.GetAxis("Horizontal"));
       }
+
 }
