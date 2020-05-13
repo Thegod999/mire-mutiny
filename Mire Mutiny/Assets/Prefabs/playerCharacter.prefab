@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7933939428604652681}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: playerCharacter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraInterface: {fileID: 3029473314706309157}
   speed: 5
+  speedRemoval: 0.02
   anim: {fileID: 0}
   Vertical: 0
   Horizontal: 0
@@ -303,7 +304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3029473315154865531}
   m_Layer: 0
-  m_Name: playerCharacter 1
+  m_Name: playerCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

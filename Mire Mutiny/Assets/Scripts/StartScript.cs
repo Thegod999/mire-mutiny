@@ -9,6 +9,7 @@ public class StartScript : MonoBehaviour
     {
       PlayerPrefs.SetFloat("Shot_Speed", 30);
       PlayerPrefs.SetFloat("Literal_Speed", 5);
+      PlayerPrefs.SetFloat("Shot_Quickness", 40);
     }
 
     // Update is called once per frame
