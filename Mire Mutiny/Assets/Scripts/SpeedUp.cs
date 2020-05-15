@@ -17,7 +17,7 @@ public class SpeedUp : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D Collision){
       if (Collision.gameObject.CompareTag("playerCharacter")){
-        PlayerPrefs.SetFloat("Literal_Speed", PlayerPrefs.GetFloat("Literal_Speed", 5)+1);
+        PlayerPrefs.SetFloat("Literal_Speed", PlayerPrefs.GetFloat("Literal_Speed", 4)+1);
         Destroy(gameObject);
     }
 }}

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-
 public class Player : MonoBehaviour
 {
   public Camera cameraInterface;
   public float speed;
+  public bool useSpeedSlow;
+  public float speedSlow;
   public float speedRemoval = 0.02f;
   public Animator anim;
   public float Vertical;
@@ -21,20 +21,16 @@ public class Player : MonoBehaviour
   public bool moveDownRight;
   public bool moveDownLeft;
   public Rigidbody2D RigidBoi2D;
-
   public Vector3 bulletOffset = new Vector3(0, 0, 0);
 	public GameObject BulletPrefab;
   public GameObject popSound;
 	public GameObject BulletPrefabClone;
 	public float shotSpeed = 5;
   private float shotSpeedReturn;
-//  public float pointerAngle;
+  public float pointerAngle;
   Vector2 pointerPosition;
   Vector2 moveLoc;
-
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
 //     float pointerAngle = Mathf.Atan2(moveLoc.y, move.x);
       shotSpeed = PlayerPrefs.GetFloat("Shot_Speed", 30);
       shotSpeedReturn = PlayerPrefs.GetFloat("Shot_Speed", 30);
@@ -47,6 +43,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update() {
       speed = PlayerPrefs.GetFloat("Literal_Speed", 5);
+      speedSlow = speed/2;
       shotSpeedReturn = PlayerPrefs.GetFloat("Shot_Speed", 30);
       pointerPosition = cameraInterface.ScreenToWorldPoint(Input.mousePosition);
       moveLoc.x = Input.GetAxisRaw("Horizontal");

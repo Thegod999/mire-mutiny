@@ -8,7 +8,7 @@ public class StartScript : MonoBehaviour
     void Start()
     {
       PlayerPrefs.SetFloat("Shot_Speed", 30);
-      PlayerPrefs.SetFloat("Literal_Speed", 5);
+      PlayerPrefs.SetFloat("Literal_Speed", 4);
       PlayerPrefs.SetFloat("Shot_Quickness", 40);
       PlayerPrefs.SetFloat("Shot_Life", 120);
     }
