@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
 
   public Vector3 bulletOffset = new Vector3(0, 0, 0);
 	public GameObject BulletPrefab;
+  public GameObject popSound;
 	public GameObject BulletPrefabClone;
 	public float shotSpeed = 5;
   private float shotSpeedReturn;
@@ -126,6 +127,7 @@ public class Player : MonoBehaviour
       if (Input.GetMouseButtonDown(0) && shotSpeed == 0) {
 //        			Vector3 offset = transform.rotation * bulletOffset;
               GameObject Bullet = (GameObject)Instantiate(BulletPrefab, transform.position, Quaternion.Euler(0, 0, pointerAngle));
+              Instantiate(popSound, transform.position, Quaternion.identity);
               shotSpeed = shotSpeedReturn;
 //              Debug.Log("clickDown");
             }
