@@ -44,6 +44,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: lowPriority
+    uniqueID: 2595228909
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: highPriority
+    uniqueID: 2482984995
     locked: 0

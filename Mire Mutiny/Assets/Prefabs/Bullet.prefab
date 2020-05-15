@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8532483715516866153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -100000, z: 0}
+  m_LocalPosition: {x: 0, y: -10000, z: 10}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,4 +96,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   life: 0
+  randomValue: 0
   BulletPrefab: {fileID: 0}
+  splatterPrefab1: {fileID: 0}
+  splatterPrefab2: {fileID: 0}
+  splatterPrefab3: {fileID: 0}

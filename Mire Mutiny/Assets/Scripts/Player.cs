@@ -126,7 +126,7 @@ public class Player : MonoBehaviour
       float pointerAngle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg -90f;
       if (Input.GetMouseButtonDown(0) && shotSpeed == 0) {
 //        			Vector3 offset = transform.rotation * bulletOffset;
-              GameObject Bullet = (GameObject)Instantiate(BulletPrefab, transform.position, Quaternion.Euler(0, 0, pointerAngle));
+              GameObject Bullet = (GameObject)Instantiate(BulletPrefab, new Vector3 (transform.position.x, transform.position.y, 5), Quaternion.Euler(0, 0, pointerAngle));
               Instantiate(popSound, transform.position, Quaternion.identity);
               shotSpeed = shotSpeedReturn;
 //              Debug.Log("clickDown");
