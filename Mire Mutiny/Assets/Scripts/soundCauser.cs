@@ -18,7 +18,7 @@ public class soundCauser : MonoBehaviour
     {
       if (gameObject.name.Contains("(Clone)") && isPlayed == false) {
         sound.Play(0);
-        Debug.Log("Sound");
+//        Debug.Log("Sound");
 //        Destroy(gameObject);
         isPlayed = true;
       }
