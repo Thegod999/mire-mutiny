@@ -97,27 +97,35 @@ public class Player : MonoBehaviour
       }
       if (Vertical == 1  && Horizontal == 1) {
         moveUpRight = true;
+        useSpeedSlow = true;
       }
       else{
         moveUpRight = false;
+        useSpeedSlow = false;
       }
       if (Vertical == 1  && Horizontal == -1) {
         moveUpLeft = true;
+        useSpeedSlow = true;
       }
       else{
         moveUpLeft = false;
+        useSpeedSlow = false;
       }
       if (Vertical == -1  && Horizontal == 1) {
         moveDownRight = true;
+        useSpeedSlow = true;
       }
       else{
         moveDownRight = false;
+        useSpeedSlow = false;
       }
       if (Vertical == -1  && Horizontal == -1) {
         moveDownLeft = true;
+        useSpeedSlow = true;
       }
       else{
         moveDownLeft = false;
+        useSpeedSlow = false;
       }
       Vector2 shootDir = pointerPosition - RigidBoi2D.position;
       float pointerAngle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg -90f;
@@ -189,7 +197,14 @@ public class Player : MonoBehaviour
       }
 //        Horizontal = Input.GetAxis("Horizontal");
 //        Vertical = Input.GetAxis("Vertical");
-
+//      if (useSpeedSlow == false) {
+//        transform.Translate(Vector3.up * speed * speedRemoval‬ * Input.GetAxis("Vertical"));
+//        transform.Translate(Vector3.right * speed * speedRemoval‬ * Input.GetAxis("Horizontal"));
+//      }
+//      if (useSpeedSlow = true) {
+//        transform.Translate(Vector3.up * speedSlow * speedRemoval‬ * Input.GetAxis("Vertical"));
+//        transform.Translate(Vector3.right * speedSlow * speedRemoval‬ * Input.GetAxis("Horizontal"));
+//      }
       transform.Translate(Vector3.up * speed * speedRemoval‬ * Input.GetAxis("Vertical"));
       transform.Translate(Vector3.right * speed * speedRemoval‬ * Input.GetAxis("Horizontal"));
       }
