@@ -7,14 +7,10 @@ public class bulletMove : MonoBehaviour
     public float speed;
     public float life;
     public int randomValue;
-    [SerializeField]
-    private GameObject BulletPrefab;
-    [SerializeField]
-    private GameObject splatterPrefab1;
-    [SerializeField]
-    private GameObject splatterPrefab2;
-    [SerializeField]
-    private GameObject splatterPrefab3;
+    public GameObject BulletPrefab;
+    public GameObject splatterPrefab1;
+    public GameObject splatterPrefab2;
+    public GameObject splatterPrefab3;
 //    private Vector3 itemLocation;
     // Start is called before the first frame update
     void Start()
