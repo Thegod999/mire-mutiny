@@ -424,7 +424,6 @@ public class MapGenerator : MonoBehaviour
           float posY = -height/2 + y + 0.5f;
           if (map[x,y] != 0 && map[x,y] != 2) {
             GameObject Ground = (GameObject)Instantiate(GroundPrefab, transform.position = new Vector2(posX, posY), Quaternion.identity);
-            Ground.GetComponent<SpriteRenderer>().color = Color.black;
             Ground.GetComponent<wallData>().mapX = x;
             Ground.GetComponent<wallData>().mapY = y;
           }
