@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
   private float shotSpeedReturn;
   public float pointerAngle;
   Vector2 pointerPosition;
-  Vector2 moveLoc;
+  public Vector2 moveLoc;
     void Start(){
 //     float pointerAngle = Mathf.Atan2(moveLoc.y, move.x);
       shotSpeed = PlayerPrefs.GetFloat("Shot_Speed", 30);
