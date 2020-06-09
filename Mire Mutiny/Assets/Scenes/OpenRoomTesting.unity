@@ -359,15 +359,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  enemyLevel: 0
+  test: 1
   startSpot: {x: 0, y: 0}
   moveSpot: {x: 0, y: 0}
   maxMoveX: 5
   maxMoveY: 5
   move: 0
   mapG: {fileID: 2036046842}
+  player: {fileID: 1537415542}
   p: {fileID: 1674945695}
+  ShootSpot: {x: 0, y: 0}
+  Bullet: {fileID: 2468256299102929072, guid: 60e6bae2aa193d54dba27068c46039d4, type: 3}
+  BulletPrefab: {fileID: 2468256299102929072, guid: 60e6bae2aa193d54dba27068c46039d4,
+    type: 3}
   secondsBetweenActions: 3
   currentBetween: 3
+  betweenAction: 1
+  isMove: 0
+  isShoot: 0
 --- !u!58 &1139955222
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -396,28 +406,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 850408264}
   m_PrefabAsset: {fileID: 0}
---- !u!195 &1537415550
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1537415542}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.1
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 0
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.16000035
-  m_BaseOffset: 0.08000018
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &1674945694 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2033430361595981093, guid: ddf704d1be251da499752b83506c89c4,
@@ -656,6 +644,11 @@ PrefabInstance:
         type: 3}
       propertyPath: SpawnY.Array.size
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2033430361754996212, guid: ddf704d1be251da499752b83506c89c4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2033430361754996215, guid: ddf704d1be251da499752b83506c89c4,
         type: 3}
