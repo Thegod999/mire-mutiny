@@ -28,6 +28,10 @@ public class Enemy : MonoBehaviour
     public bool betweenAction = true;
     public bool isMove = false;
     public bool isShoot = false;
+
+    public bool isStray = false;
+    public bool inCamp = false;
+    public GameObject campMod;
     void Start() {
 
 
@@ -92,14 +96,14 @@ public class Enemy : MonoBehaviour
     isShoot = false;
     isMove = false;
   }
-  public void OnTriggerEnter2D(Collider col) {
+  public void OnTriggerEnter2D(Collider2D col) {
     if (col.gameObject.name == "Player") {
       test = true;
       Path = new List<Coord>();
       Debug.Log("FoundCharacter");
       }
     }
-  public void OnTriggerExit2D(Collider col) {
+  public void OnTriggerExit2D(Collider2D col) {
     if (col.gameObject.name == "Player") {
       test = false;
     }

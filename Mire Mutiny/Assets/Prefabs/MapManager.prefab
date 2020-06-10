@@ -46,12 +46,17 @@ MonoBehaviour:
   mapData: {fileID: 2033430361595981092}
   player: {fileID: 2033430361721900036}
   playerSafe: 5
-  minTotalStrayEnemyCount: 50
-  maxTotalStrayEnemyCount: 50
-  minTotalEnemyCampCount: 50
-  maxTotalEnemyCampCount: 50
+  minTotalStrayEnemyCount: 5
+  maxTotalStrayEnemyCount: 13
+  minTotalEnemyCampCount: 3
+  maxTotalEnemyCampCount: 8
+  minSpawnDistance: 0
+  maxSpawnDistance: 8
   TotalEnemyCampCount: 5
   TotalStrayEnemyCount: 3
+  Enemy: {fileID: 1268392818969462391, guid: f425a6c0aeeafe34ca1666c4072ce6c2, type: 3}
+  EnemyPrefab: {fileID: 1268392818969462391, guid: f425a6c0aeeafe34ca1666c4072ce6c2,
+    type: 3}
   EnemySpawns: {fileID: 2033430360914448161}
   EnemySpawnsPrefab: {fileID: 2033430360914448161}
 --- !u!1 &2033430360914448161

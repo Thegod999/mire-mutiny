@@ -15,9 +15,15 @@ public class enemyManager : MonoBehaviour
   public int minTotalEnemyCampCount;
   [Range(0,50)]
   public int maxTotalEnemyCampCount;
+  [Range(0,50)]
+  public float minSpawnDistance;
+  [Range(0,50)]
+  public float maxSpawnDistance;
 
   public int TotalEnemyCampCount;
   public int TotalStrayEnemyCount;
+  public GameObject Enemy;
+  public GameObject EnemyPrefab;
   public GameObject EnemySpawns;
   public GameObject EnemySpawnsPrefab;
 
@@ -28,9 +34,9 @@ public class enemyManager : MonoBehaviour
   public List<int[,]> EnemyStrayLoc = new List<int[,]>();
 
 
-    void Start() {
-      TotalEnemyCampCount = Random.Range(minTotalEnemyCampCount, maxTotalEnemyCampCount);
-      TotalStrayEnemyCount = Random.Range(minTotalStrayEnemyCount, maxTotalStrayEnemyCount);
+    void Awake() {
+      TotalEnemyCampCount = Random.Range(minTotalEnemyCampCount, maxTotalEnemyCampCount + 1);
+      TotalStrayEnemyCount = Random.Range(minTotalStrayEnemyCount, maxTotalStrayEnemyCount + 1);
 
     for (int x = 0; x < mapData.width; x ++) {
       for (int y = 0; y < mapData.height; y ++) {
@@ -40,21 +46,39 @@ public class enemyManager : MonoBehaviour
         }
       }
     }
-    for (int GetStrayCount = 0; GetStrayCount <= TotalStrayEnemyCount; GetStrayCount ++) {
+  }
+  void Start() {
+    MakeStrays();
+    MakeCamps();
+  }
+  public void MakeStrays() {
+    Debug.Log("Making Enemies");
+    int StrayCount = 0;
+    while(StrayCount < TotalStrayEnemyCount) {
       int i = UnityEngine.Random.Range (0, EnemyX.Count);
       float posX = -mapData.width/2 + EnemyX[i] + 0.5f;
       float posY = -mapData.height/2 + EnemyY[i] + 0.5f;
-      GameObject EnemySpawns = (GameObject)Instantiate(EnemySpawnsPrefab, transform.position = new Vector2(posX, posY), Quaternion.identity);
-      EnemySpawns.GetComponent<SpriteRenderer>().color = Color.red;
-      EnemySpawns.GetComponent<enemySpawn>().IsStray = true;
+      GameObject Enemy = (GameObject)Instantiate(EnemyPrefab, transform.position = new Vector2(posX, posY), Quaternion.identity);
+      EnemySpawns.GetComponent<Enemy>().isStray = true;
+      StrayCount += 1;
       }
-
-    for (int GetCampCount = 0; GetCampCount <= TotalEnemyCampCount; GetCampCount ++) {
+    }
+  public void MakeCamps() {
+    Debug.Log("Making Camps");
+    int GetCampCount = 0;
+    while (GetCampCount < TotalEnemyCampCount) {
       int ECi = UnityEngine.Random.Range (0, EnemyX.Count);
       float ECX = -mapData.width/2 + EnemyX[ECi] + 0.5f;
       float ECY = -mapData.height/2 + EnemyY[ECi] + 0.5f;
       GameObject EnemySpawns = (GameObject)Instantiate(EnemySpawnsPrefab, transform.position = new Vector2(ECX, ECY), Quaternion.identity);
       EnemySpawns.GetComponent<SpriteRenderer>().color = Color.blue;
+        for (int i = 0; i < EnemySpawns.GetComponent<enemySpawn>().CampSize; i++) {
+          float posX = Random.Range(minSpawnDistance, maxSpawnDistance + 1);
+          float posY = Random.Range(minSpawnDistance, maxSpawnDistance + 1);
+          GameObject Enemy = (GameObject)Instantiate(EnemyPrefab, transform.position = new Vector2(EnemySpawns.transform.position.x, EnemySpawns.transform.position.y), Quaternion.identity);
+          Enemy.GetComponent<Enemy>().inCamp = true;
+          Enemy.GetComponent<Enemy>().campMod = EnemySpawns;
+        }
     }
   }
 }
