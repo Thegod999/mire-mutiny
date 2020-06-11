@@ -103,6 +103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraInterface: {fileID: 3029473314706309157}
   speed: 5
+  useSpeedSlow: 0
+  speedSlow: 0
   speedRemoval: 0.02
   anim: {fileID: 0}
   Vertical: 0
@@ -121,6 +123,10 @@ MonoBehaviour:
   popSound: {fileID: 7150969577686346489}
   BulletPrefabClone: {fileID: 0}
   shotSpeed: 0
+  pointerAngle: 0
+  moveLoc: {x: 0, y: 0}
+  dashActive: 0
+  dashLock: 0
 --- !u!95 &3029473314548818501
 Animator:
   serializedVersion: 3
@@ -185,7 +191,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 2
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &7933939428604652681
 BoxCollider2D:

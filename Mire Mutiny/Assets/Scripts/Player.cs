@@ -30,10 +30,24 @@ public class Player : MonoBehaviour
   public float pointerAngle;
   Vector2 pointerPosition;
   public Vector2 moveLoc;
+  public bool dashActive;
+  public float dashLock ;
+  public bool dashCont;
+  public bool dashUp;
+  public bool dashDown;
+  public bool dashLeft;
+  public bool dashRight;
+  public bool dashUpRight;
+  public bool dashUpLeft;
+  public bool dashDownRight;
+  public bool dashDownLeft;
+
     void Start(){
 //     float pointerAngle = Mathf.Atan2(moveLoc.y, move.x);
       shotSpeed = PlayerPrefs.GetFloat("Shot_Speed", 30);
       shotSpeedReturn = PlayerPrefs.GetFloat("Shot_Speed", 30);
+      dashLock = PlayerPrefs.GetFloat("dash_Time", 30);
+      dashActive = true;
       Horizontal = 0;
       Vertical = 0;
 //      speed = speed/50;
@@ -73,24 +87,36 @@ public class Player : MonoBehaviour
       }
       if (Horizontal == -1 && Vertical == 0) {
         moveLeft = true;
+        if (dashCont == true) {
+          dashLeft = true;
+        }
       }
       else{
         moveLeft = false;
       }
       if (Horizontal == 1 && Vertical == 0) {
         moveRight = true;
+        if (dashCont == true) {
+          dashRight = true;
+        }
       }
       else{
         moveRight = false;
       }
       if (Vertical == 1 && Horizontal == 0) {
         moveUp = true;
+        if (dashCont == true) {
+          dashUp = true;
+        }
       }
       else{
         moveUp = false;
       }
       if (Vertical == -1  && Horizontal == 0) {
         moveDown = true;
+        if (dashCont == true) {
+          dashDown = true;
+        }
       }
       else{
         moveDown = false;
@@ -98,6 +124,9 @@ public class Player : MonoBehaviour
       if (Vertical == 1  && Horizontal == 1) {
         moveUpRight = true;
         useSpeedSlow = true;
+        if (dashCont == true) {
+          dashUpRight = true;
+        }
       }
       else{
         moveUpRight = false;
@@ -106,6 +135,9 @@ public class Player : MonoBehaviour
       if (Vertical == 1  && Horizontal == -1) {
         moveUpLeft = true;
         useSpeedSlow = true;
+        if (dashCont == true) {
+          dashUpRight = true;
+        }
       }
       else{
         moveUpLeft = false;
@@ -114,6 +146,9 @@ public class Player : MonoBehaviour
       if (Vertical == -1  && Horizontal == 1) {
         moveDownRight = true;
         useSpeedSlow = true;
+        if (dashCont == true) {
+          dashDownRight = true;
+        }
       }
       else{
         moveDownRight = false;
@@ -122,10 +157,22 @@ public class Player : MonoBehaviour
       if (Vertical == -1  && Horizontal == -1) {
         moveDownLeft = true;
         useSpeedSlow = true;
+        if (dashCont == true) {
+          dashDownLeft = true;
+        }
       }
       else{
         moveDownLeft = false;
         useSpeedSlow = false;
+      }
+      if (dashLock != 0) {
+        dashLock--;
+      }
+      if (Input.GetKeyDown(KeyCode.LeftShift) && dashActive == true && dashLock <= 0){
+        Debug.Log("Dash!");
+        dashCont = true;
+        dashActive = false;
+//        dashLock = PlayerPrefs.GetFloat("dash_Time", 30);
       }
       Vector2 shootDir = pointerPosition - RigidBoi2D.position;
       float pointerAngle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg -90f;
@@ -208,5 +255,4 @@ public class Player : MonoBehaviour
       transform.Translate(Vector3.up * speed * speedRemoval‬ * Input.GetAxis("Vertical"));
       transform.Translate(Vector3.right * speed * speedRemoval‬ * Input.GetAxis("Horizontal"));
       }
-
 }
