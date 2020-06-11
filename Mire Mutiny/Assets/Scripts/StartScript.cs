@@ -12,6 +12,7 @@ public class StartScript : MonoBehaviour
       PlayerPrefs.SetFloat("Shot_Quickness", 40);
       PlayerPrefs.SetFloat("Shot_Life", 120);
       PlayerPrefs.SetFloat("dash_Time", 30);
+      PlayerPrefs.SetFloat("dash_anim_wait", 30);
     }
 
     // Update is called once per frame

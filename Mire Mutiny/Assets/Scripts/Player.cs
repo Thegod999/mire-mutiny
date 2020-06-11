@@ -41,12 +41,14 @@ public class Player : MonoBehaviour
   public bool dashUpLeft;
   public bool dashDownRight;
   public bool dashDownLeft;
+  public float dashAnimWait;
 
     void Start(){
 //     float pointerAngle = Mathf.Atan2(moveLoc.y, move.x);
       shotSpeed = PlayerPrefs.GetFloat("Shot_Speed", 30);
       shotSpeedReturn = PlayerPrefs.GetFloat("Shot_Speed", 30);
       dashLock = PlayerPrefs.GetFloat("dash_Time", 30);
+      dashAnimWait = PlayerPrefs.GetFloat("dash_anim_wait", 30);
       dashActive = true;
       Horizontal = 0;
       Vertical = 0;
@@ -89,6 +91,8 @@ public class Player : MonoBehaviour
         moveLeft = true;
         if (dashCont == true) {
           dashLeft = true;
+          dashLock = PlayerPrefs.GetFloat("dash_Time", 30);
+          dashCont = false;
         }
       }
       else{
@@ -98,6 +102,8 @@ public class Player : MonoBehaviour
         moveRight = true;
         if (dashCont == true) {
           dashRight = true;
+          dashLock = PlayerPrefs.GetFloat("dash_Time", 30);
+          dashCont = false;
         }
       }
       else{
@@ -107,6 +113,8 @@ public class Player : MonoBehaviour
         moveUp = true;
         if (dashCont == true) {
           dashUp = true;
+          dashLock = PlayerPrefs.GetFloat("dash_Time", 30);
+          dashCont = false;
         }
       }
       else{
@@ -116,6 +124,8 @@ public class Player : MonoBehaviour
         moveDown = true;
         if (dashCont == true) {
           dashDown = true;
+          dashLock = PlayerPrefs.GetFloat("dash_Time", 30);
+          dashCont = false;
         }
       }
       else{
@@ -126,6 +136,8 @@ public class Player : MonoBehaviour
         useSpeedSlow = true;
         if (dashCont == true) {
           dashUpRight = true;
+          dashLock = PlayerPrefs.GetFloat("dash_Time", 30);
+          dashCont = false;
         }
       }
       else{
@@ -136,7 +148,9 @@ public class Player : MonoBehaviour
         moveUpLeft = true;
         useSpeedSlow = true;
         if (dashCont == true) {
-          dashUpRight = true;
+          dashUpLeft = true;
+          dashLock = PlayerPrefs.GetFloat("dash_Time", 30);
+          dashCont = false;
         }
       }
       else{
@@ -148,6 +162,8 @@ public class Player : MonoBehaviour
         useSpeedSlow = true;
         if (dashCont == true) {
           dashDownRight = true;
+          dashLock = PlayerPrefs.GetFloat("dash_Time", 30);
+          dashCont = false;
         }
       }
       else{
@@ -159,6 +175,8 @@ public class Player : MonoBehaviour
         useSpeedSlow = true;
         if (dashCont == true) {
           dashDownLeft = true;
+          dashLock = PlayerPrefs.GetFloat("dash_Time", 30);
+          dashCont = false;
         }
       }
       else{
@@ -171,7 +189,7 @@ public class Player : MonoBehaviour
       if (Input.GetKeyDown(KeyCode.LeftShift) && dashActive == true && dashLock <= 0){
         Debug.Log("Dash!");
         dashCont = true;
-        dashActive = false;
+//        dashActive = false;
 //        dashLock = PlayerPrefs.GetFloat("dash_Time", 30);
       }
       Vector2 shootDir = pointerPosition - RigidBoi2D.position;
@@ -200,6 +218,14 @@ public class Player : MonoBehaviour
       anim.SetBool("moveDownLeft", moveDownLeft);
       anim.SetBool("moveLeft", moveLeft);
       anim.SetBool("moveRight", moveRight);
+      anim.SetBool("dashUpRight", dashUpRight);
+      anim.SetBool("dashUp", dashUp);
+      anim.SetBool("dashUpLeft", dashUpLeft);
+      anim.SetBool("dashDownRight", dashDownRight);
+      anim.SetBool("dashDown", dashDown);
+      anim.SetBool("dashDownLeft", dashDownLeft);
+      anim.SetBool("dashLeft", dashLeft);
+      anim.SetBool("dashRight", dashRight);
       if (Input.GetKeyUp(KeyCode.R)) {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
