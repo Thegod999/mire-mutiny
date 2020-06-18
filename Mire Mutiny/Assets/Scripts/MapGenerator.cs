@@ -39,9 +39,13 @@ public class MapGenerator : MonoBehaviour
   private bool smooth = false;
 
   public int [,] map;
+  public int currentLV;
+
 
 
   void Start() {
+    currentLV = PlayerPrefs.GetInt("currentLevel", 0) + 1;
+    PlayerPrefs.SetInt("currentLevel", currentLV);
     width = UnityEngine.Random.Range(minWidth, maxWidth);
     height = UnityEngine.Random.Range(minHeight, maxHeight);
     RandValue = UnityEngine.Random.Range(-214748364.0f, 214748364.0f);
@@ -426,12 +430,12 @@ public class MapGenerator : MonoBehaviour
             GameObject Ground = (GameObject)Instantiate(GroundPrefab, transform.position = new Vector2(posX, posY), Quaternion.identity);
             Ground.GetComponent<wallData>().mapX = x;
             Ground.GetComponent<wallData>().mapY = y;
+
           }
         }
       }
     }
-}
-
+  }
 
   void setup(){
     RandValue = UnityEngine.Random.Range(-214748364.0f, 214748364.0f);

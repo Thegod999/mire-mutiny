@@ -5,6 +5,7 @@ using UnityEngine;
 public class wallData : MonoBehaviour
 {
     public MapGenerator mapData;
+    public bool visual = false;
     public int mapX;
     public int mapY;
     public int surroundingWallCount = 8;
@@ -20,9 +21,14 @@ public class wallData : MonoBehaviour
 
     void Start()
     {
-      for (int x = -1; x <= +1; x++) {
-        for (int y = -1; y <= +1; y++) {
-          if (mapData.map[mapX+x,mapY+y] == 0) {
+      if (visual == false) {
+      for (int x = -1; x <= 1; x++) {
+        for (int y = -1; y <= 1; y++) {
+          int ix = mapX + x;
+          int iy = mapY + y;
+          if (mapData.map[ix,iy] == 0 || mapData.map[ix,iy] == 2) {
+            surroundingWallCount --;
+            mapData.map[ix, iy] = 2;
             if (x == -1 && y == -1) {
               BL = true;
             }
@@ -50,62 +56,77 @@ public class wallData : MonoBehaviour
           }
         }
       }
-      if (TL == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[0];
-      }
-      if (TR == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[2];
-      }
-      if (BL == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[5];
-      }
-      if (BR == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[7];
-      }
-      if (TM == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[1];
-      }
-      if (ML == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[3];
-      }
-      if (MR == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[4];
+      if(surroundingWallCount == 8) {
+        Destroy(this.gameObject);
       }
       if (BM == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[6];
+        float posX = this.transform.position.x;
+        float posY = this.transform.position.y - 1f;
+        GameObject Ground = (GameObject)Instantiate(mapData.GroundPrefab, transform.position = new Vector2(posX, posY), Quaternion.identity);
+        Ground.GetComponent<wallData>().visual = true;
+        this.gameObject.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1f,0);
+      }
+      if (TL == true) {
+        this.GetComponent<SpriteRenderer>().sprite = sprites[0];
+      }
+      if (TR == true) {
+        this.GetComponent<SpriteRenderer>().sprite = sprites[1];
+      }
+      if (BL == true) {
+        this.GetComponent<SpriteRenderer>().sprite = sprites[2];
+      }
+      if (BR == true) {
+        this.GetComponent<SpriteRenderer>().sprite = sprites[3];
+      }
+      if (TM == true) {
+        this.GetComponent<SpriteRenderer>().sprite = sprites[4];
+      }
+      if (ML == true) {
+        this.GetComponent<SpriteRenderer>().sprite = sprites[5];
+      }
+      if (MR == true) {
+        this.GetComponent<SpriteRenderer>().sprite = sprites[6];
+      }
+      if (BM == true) {
+        this.GetComponent<SpriteRenderer>().sprite = sprites[7];
       }
       if (TM == true && ML == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[8];
+        this.GetComponent<SpriteRenderer>().sprite = sprites[8];
       }
       if (ML == true && BM == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[9];
+        this.GetComponent<SpriteRenderer>().sprite = sprites[9];
       }
       if (BM == true && MR == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[10];
+        this.GetComponent<SpriteRenderer>().sprite = sprites[10];
       }
       if (MR == true && TM == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[11];
+        this.GetComponent<SpriteRenderer>().sprite = sprites[11];
       }
       if (TM == true && BM == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[12];
+        this.GetComponent<SpriteRenderer>().sprite = sprites[12];
       }
       if (ML == true && MR == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[13];
+        this.GetComponent<SpriteRenderer>().sprite = sprites[13];
       }
       if (ML == true && TM == true && MR == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[14];
+        this.GetComponent<SpriteRenderer>().sprite = sprites[14];
       }
       if (BM == true && ML == true && TM == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[15];
+        this.GetComponent<SpriteRenderer>().sprite = sprites[15];
       }
       if (MR == true && BM == true && ML == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[16];
+        this.GetComponent<SpriteRenderer>().sprite = sprites[16];
       }
       if (TM == true && MR == true && BM == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[17];
+        this.GetComponent<SpriteRenderer>().sprite = sprites[17];
       }
       if (TM == true && MR == true && BM == true && ML == true) {
-        GetComponent<SpriteRenderer>().sprite = sprites[18];
+        this.GetComponent<SpriteRenderer>().sprite = sprites[18];
       }
-      }
+    }
+    else {
+      this.GetComponent<SpriteRenderer>().sprite = sprites[19];
+      this.GetComponent<BoxCollider2D>().enabled = false;
+    }
+  }
 }

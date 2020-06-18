@@ -14,17 +14,19 @@ public class spawnManager : MonoBehaviour
 
     void Start()
     {
-    wallData[] wall = Object.FindObjectsOfType<wallData>();
-    foreach (wallData w in wall) {
-      if (w.surroundingWallCount < 8) {
-        SpawnX.Add(w.mapX);
-        SpawnY.Add(w.mapY);
+    for(int x = 0; x <= mapData.width; x++) {
+        for(int y = 0; y <= mapData.height; y++) {
+          if (mapData.map[x,y] == 0) {
+        SpawnX.Add(x);
+        SpawnY.Add(y);
       }
     }
-
-    int i = UnityEngine.Random.Range (0, SpawnX.Count);
+  }
+    Debug.Log(SpawnX.Count);
+    int i = Random.Range (0, SpawnX.Count);
     float posX = -mapData.width/2 + SpawnX[i] + 0.5f;
     float posY = -mapData.height/2 + SpawnY[i] + 0.5f;
+    Debug.Log(posX + " " + posY);
     GameObject Spawn = (GameObject)Instantiate(SpawnPrefab, transform.position = new Vector2(posX, posY), Quaternion.identity);
     Spawn.GetComponent<SpriteRenderer>().color = Color.green;
     SpawnPointX = SpawnX[i];

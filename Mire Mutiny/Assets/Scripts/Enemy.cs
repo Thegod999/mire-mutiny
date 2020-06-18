@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float speed;
     public int enemyLevel;
-    public bool test = false;
+    public bool playerInSight = false;
     public Vector2 startSpot;
     public Vector2 moveSpot;
     public float maxMoveX;
@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     public bool move = false;
 
     public MapGenerator mapG;
+    public enemyManager em;
     public GameObject player;
     public Pathfinding p;
 
@@ -31,11 +32,12 @@ public class Enemy : MonoBehaviour
 
     public bool isStray = false;
     public bool inCamp = false;
+    public float detectionTime;
     public GameObject campMod;
+    public float campMoveDis;
     void Start() {
-
-
-    }
+      em.StrayEnemyCount += 1;
+  }
 
   public void Update() {
     if (Path.Count == 0) {
@@ -63,18 +65,16 @@ public class Enemy : MonoBehaviour
     }
   }
   public void FindMoveSpot() {
-    Debug.Log("Moving");
     Vector2 move = new Vector2(Random.Range(transform.position.x-maxMoveX, transform.position.x+maxMoveX+1), Random.Range(transform.position.y-maxMoveY, transform.position.y+maxMoveY+1));
     while (mapG.map[Mathf.RoundToInt(move.x - 0.5f + -mapG.width/-2), Mathf.RoundToInt(move.y - 0.5f + -mapG.height/-2)] == 1) {
       move = new Vector2(Random.Range(transform.position.x-maxMoveX, transform.position.x+maxMoveX+1), Random.Range(transform.position.y-maxMoveY, transform.position.y+maxMoveY+1));
     }
-    if (test == true) {
+    if (playerInSight == true) {
       move = new Vector2(player.transform.position.x, player.transform.position.y);
     }
     p.GoFindPath(this.transform.position, move, this.GetComponent<Enemy>());
   }
   public void FindShootSpot() {
-    Debug.Log("Shooting");
     Player pl = player.GetComponent<Player>();
     Vector3 offset = new Vector3(0,0,0);
     Vector3 dir = new Vector3(0,0,0);
@@ -98,20 +98,20 @@ public class Enemy : MonoBehaviour
   }
   public void OnTriggerEnter2D(Collider2D col) {
     if (col.gameObject.name == "Player") {
-      test = true;
+      playerInSight = true;
       Path = new List<Coord>();
       Debug.Log("FoundCharacter");
       }
     }
   public void OnTriggerExit2D(Collider2D col) {
     if (col.gameObject.name == "Player") {
-      test = false;
+      playerInSight = false;
     }
   }
 
   public int DetermineAction() {
     int i = 0;
-    if (test == true) {
+    if (playerInSight == true) {
       i = (Mathf.RoundToInt(Random.Range(0, 2)) < 1)? 0 : 1;
     }
     return i;

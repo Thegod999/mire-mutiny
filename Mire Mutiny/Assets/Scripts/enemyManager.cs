@@ -19,22 +19,28 @@ public class enemyManager : MonoBehaviour
   public float minSpawnDistance;
   [Range(0,50)]
   public float maxSpawnDistance;
+  [Range(0,50)]
+  public int minCampSpawn;
+  [Range(0,50)]
+  public int maxCampSpawn;
 
   public int TotalEnemyCampCount;
   public int TotalStrayEnemyCount;
+  public int EnemyCampCount = 0;
+  public int StrayEnemyCount = 0;
   public GameObject Enemy;
   public GameObject EnemyPrefab;
   public GameObject EnemySpawns;
   public GameObject EnemySpawnsPrefab;
 
-  private List<int> EnemyX = new List<int>();
+  public List<int> EnemyX = new List<int>();
   private List<int> EnemyY = new List<int>();
 
   public List<int[,]> EnemyCampLoc = new List<int[,]>();
   public List<int[,]> EnemyStrayLoc = new List<int[,]>();
 
 
-    void Awake() {
+    void Start() {
       TotalEnemyCampCount = Random.Range(minTotalEnemyCampCount, maxTotalEnemyCampCount + 1);
       TotalStrayEnemyCount = Random.Range(minTotalStrayEnemyCount, maxTotalStrayEnemyCount + 1);
 
@@ -46,39 +52,34 @@ public class enemyManager : MonoBehaviour
         }
       }
     }
+    Debug.Log(EnemyX.Count);
   }
-  void Start() {
+  void Update() {
+    if (StrayEnemyCount < TotalStrayEnemyCount) {
     MakeStrays();
+  }
+  if (EnemyCampCount < TotalEnemyCampCount) {
     MakeCamps();
+  }
+    if (EnemyCampCount >= TotalEnemyCampCount && StrayEnemyCount >= TotalStrayEnemyCount) {
+    this.gameObject.SetActive(false);
+    }
   }
   public void MakeStrays() {
     Debug.Log("Making Enemies");
-    int StrayCount = 0;
-    while(StrayCount < TotalStrayEnemyCount) {
       int i = UnityEngine.Random.Range (0, EnemyX.Count);
       float posX = -mapData.width/2 + EnemyX[i] + 0.5f;
       float posY = -mapData.height/2 + EnemyY[i] + 0.5f;
       GameObject Enemy = (GameObject)Instantiate(EnemyPrefab, transform.position = new Vector2(posX, posY), Quaternion.identity);
       EnemySpawns.GetComponent<Enemy>().isStray = true;
-      StrayCount += 1;
-      }
     }
   public void MakeCamps() {
     Debug.Log("Making Camps");
-    int GetCampCount = 0;
-    while (GetCampCount < TotalEnemyCampCount) {
       int ECi = UnityEngine.Random.Range (0, EnemyX.Count);
       float ECX = -mapData.width/2 + EnemyX[ECi] + 0.5f;
       float ECY = -mapData.height/2 + EnemyY[ECi] + 0.5f;
       GameObject EnemySpawns = (GameObject)Instantiate(EnemySpawnsPrefab, transform.position = new Vector2(ECX, ECY), Quaternion.identity);
       EnemySpawns.GetComponent<SpriteRenderer>().color = Color.blue;
-        for (int i = 0; i < EnemySpawns.GetComponent<enemySpawn>().CampSize; i++) {
-          float posX = Random.Range(minSpawnDistance, maxSpawnDistance + 1);
-          float posY = Random.Range(minSpawnDistance, maxSpawnDistance + 1);
-          GameObject Enemy = (GameObject)Instantiate(EnemyPrefab, transform.position = new Vector2(EnemySpawns.transform.position.x, EnemySpawns.transform.position.y), Quaternion.identity);
-          Enemy.GetComponent<Enemy>().inCamp = true;
-          Enemy.GetComponent<Enemy>().campMod = EnemySpawns;
-        }
-    }
+      EnemySpawns.GetComponent<enemySpawn>().CampSize = Random.Range(minCampSpawn, maxCampSpawn + 1);
   }
 }

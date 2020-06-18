@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapData: {fileID: 2033430361595981092}
-  player: {fileID: 2033430361721900036}
+  player: {fileID: 0}
   playerSafe: 5
   minTotalStrayEnemyCount: 5
   maxTotalStrayEnemyCount: 13
@@ -52,13 +52,18 @@ MonoBehaviour:
   maxTotalEnemyCampCount: 8
   minSpawnDistance: 0
   maxSpawnDistance: 8
+  minCampSpawn: 0
+  maxCampSpawn: 0
   TotalEnemyCampCount: 5
   TotalStrayEnemyCount: 3
+  EnemyCampCount: 0
+  StrayEnemyCount: 0
   Enemy: {fileID: 1268392818969462391, guid: f425a6c0aeeafe34ca1666c4072ce6c2, type: 3}
   EnemyPrefab: {fileID: 1268392818969462391, guid: f425a6c0aeeafe34ca1666c4072ce6c2,
     type: 3}
   EnemySpawns: {fileID: 2033430360914448161}
   EnemySpawnsPrefab: {fileID: 2033430360914448161}
+  EnemyX: 
 --- !u!1 &2033430360914448161
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,11 +201,10 @@ MonoBehaviour:
   seed: 
   useRandomSeed: 0
   randomFillPercent: 46
-  GroundPrefab: {fileID: 7042772099521671701, guid: 4f8a394637f3c4b47b99924b3b0a32bd,
-    type: 3}
-  GroundPrefabClone: {fileID: 7042772099521671701, guid: 4f8a394637f3c4b47b99924b3b0a32bd,
-    type: 3}
-  MapGen: {fileID: 7042772099521671701, guid: 4f8a394637f3c4b47b99924b3b0a32bd, type: 3}
+  GroundPrefab: {fileID: 2033430361754996200}
+  GroundPrefabClone: {fileID: 2033430361754996200}
+  MapGen: {fileID: 2033430361754996200}
+  currentLV: 0
 --- !u!1 &2033430361721900037
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +214,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2033430361721900035}
-  - component: {fileID: 2033430361721900036}
   m_Layer: 0
   m_Name: spawnManager
   m_TagString: Untagged
@@ -232,23 +235,6 @@ Transform:
   m_Father: {fileID: 527057475180939481}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2033430361721900036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2033430361721900037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d406af678049c944a32770095f72e27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapData: {fileID: 2033430361595981092}
-  SpawnPointX: 0
-  SpawnPointY: 0
-  Spawns: {fileID: 2033430361913761810}
-  SpawnPrefab: {fileID: 2033430361913761810}
 --- !u!1 &2033430361913761810
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,6 +411,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f8a394637f3c4b47b99924b3b0a32bd, type: 3}
+--- !u!1 &2033430361754996200 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7042772099521671701, guid: 4f8a394637f3c4b47b99924b3b0a32bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 9044567029186822141}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2033430361754996214 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7042772099521671691, guid: 4f8a394637f3c4b47b99924b3b0a32bd,
