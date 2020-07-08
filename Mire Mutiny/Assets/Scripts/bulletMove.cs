@@ -15,7 +15,7 @@ public class bulletMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      speed = PlayerPrefs.GetFloat("Shot_Quickness", 40);
+      speed = PlayerPrefs.GetFloat("Shot_Quickness", 120);
       life = PlayerPrefs.GetFloat("Shot_Life", 120);
     }
 
@@ -27,7 +27,7 @@ public class bulletMove : MonoBehaviour
         if (gameObject.name.Contains("(Clone)")) {
             life--;
         }
-        speed = PlayerPrefs.GetFloat("Shot_Quickness", 40);
+        speed = PlayerPrefs.GetFloat("Shot_Quickness", 120);
         transform.Translate(Vector2.up * speed * .001f);
         if (life <= 0 && gameObject.name.Contains("(Clone)")) {
 //          itemLocation = gameObject.GetComponent<Transform>();

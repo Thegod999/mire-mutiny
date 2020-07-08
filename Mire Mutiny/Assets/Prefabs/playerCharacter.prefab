@@ -106,6 +106,7 @@ MonoBehaviour:
   useSpeedSlow: 0
   speedSlow: 0
   speedRemoval: 0.02
+  spreadRange: 10
   anim: {fileID: 0}
   Vertical: 0
   Horizontal: 0
@@ -114,12 +115,12 @@ MonoBehaviour:
   moveLeft: 0
   moveRight: 0
   moveUpRight: 0
-  moveUpLeft: 0
+  moveUpLeft: 1
   moveDownRight: 0
   moveDownLeft: 0
   RigidBoi2D: {fileID: 7933939428604652661}
   bulletOffset: {x: 0, y: 0, z: 0}
-  BulletPrefab: {fileID: 6907454741843958951}
+  BulletPrefab: {fileID: 0}
   popSound: {fileID: 7150969577686346489}
   BulletPrefabClone: {fileID: 0}
   shotSpeed: 0
@@ -127,6 +128,16 @@ MonoBehaviour:
   moveLoc: {x: 0, y: 0}
   dashActive: 0
   dashLock: 0
+  dashCont: 0
+  dashUp: 0
+  dashDown: 0
+  dashLeft: 0
+  dashRight: 0
+  dashUpRight: 0
+  dashUpLeft: 0
+  dashDownRight: 0
+  dashDownLeft: 0
+  dashAnimWait: 0
 --- !u!95 &3029473314548818501
 Animator:
   serializedVersion: 3

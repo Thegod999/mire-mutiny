@@ -56,6 +56,28 @@ public class wallData : MonoBehaviour
           }
         }
       }
+      if (mapX == 0) {
+        if (mapData.map[mapX+1, mapY] == 0) {
+        MR = true;
+        }
+      }
+      else {
+      }
+      if (mapX == mapData.width) {
+        if (mapData.map[mapX-1, mapY] == 0) {
+        ML = true;
+        }
+      }
+      if (mapY == 0) {
+        if (mapData.map[mapX, mapY+1] == 0) {
+        TM = true;
+        }
+      }
+      if (mapY == mapData.height) {
+        if (mapData.map[mapX, mapY-1] == 0) {
+        BM = true;
+        }
+      }
       if(surroundingWallCount == 8) {
         Destroy(this.gameObject);
       }

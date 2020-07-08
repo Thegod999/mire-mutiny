@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
   public bool useSpeedSlow;
   public float speedSlow;
   public float speedRemoval = 0.02f;
+  public float spreadRange;
   public Animator anim;
   public float Vertical;
   public float Horizontal;
@@ -193,7 +194,7 @@ public class Player : MonoBehaviour
 //        dashLock = PlayerPrefs.GetFloat("dash_Time", 30);
       }
       Vector2 shootDir = pointerPosition - RigidBoi2D.position;
-      float pointerAngle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg -90f;
+      float pointerAngle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg - 90f + Random.Range(-spreadRange, spreadRange);
       if (Input.GetMouseButtonDown(0) && shotSpeed == 0) {
 //        			Vector3 offset = transform.rotation * bulletOffset;
               GameObject Bullet = (GameObject)Instantiate(BulletPrefab, new Vector3 (transform.position.x, transform.position.y, 5), Quaternion.Euler(0, 0, pointerAngle));

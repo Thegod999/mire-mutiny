@@ -17,7 +17,11 @@ public class MapGenerator : MonoBehaviour
   public int width;
   public int height;
 
+  public int spawnDis;
+  public int endFromSpawnDis;
+
   public int smoothness;
+  public int extrudeFromEdge;
   [Range(1,100)]
   public int roomThresholdSize;
   [Range(1,100)]
@@ -299,7 +303,7 @@ public class MapGenerator : MonoBehaviour
 	}
 
 	bool IsInMapRange(int x, int y) {
-		return x >= 0 && x < width && y >= 0 && y < height;
+		return x > 0 && x < width && y > 0 && y < height;
 	}
 
 
@@ -312,9 +316,12 @@ public class MapGenerator : MonoBehaviour
 
 		for (int x = 0; x < width; x ++) {
 			for (int y = 0; y < height; y ++) {
-				if (x == 0 || x == width-1 || y == 0 || y == height -1) {
+				if (x == 0 || x == width-1 || y == 0 || y == height -1 || x < 0 || x > width || y < 0 || y > height) {
 					map[x,y] = 1;
 				}
+        if (x < extrudeFromEdge || x > width - extrudeFromEdge || y < extrudeFromEdge || y > height - extrudeFromEdge) {
+          map[x,y] = 1;
+        }
 				else {
 					map[x,y] = (pseudoRandom.Next(0,100) < randomFillPercent)? 1: 0;
 				}
@@ -327,9 +334,9 @@ public class MapGenerator : MonoBehaviour
 			for (int y = 0; y < height; y ++) {
 				int neighbourWallTiles = GetSurroundingWallCount(x,y);
 
-				if (neighbourWallTiles > 4)
+				if (neighbourWallTiles > smoothness)
 					map[x,y] = 1;
-				else if (neighbourWallTiles < 4)
+				else if (neighbourWallTiles < smoothness)
 					map[x,y] = 0;
 
 			}
@@ -431,6 +438,9 @@ public class MapGenerator : MonoBehaviour
             Ground.GetComponent<wallData>().mapX = x;
             Ground.GetComponent<wallData>().mapY = y;
 
+          }
+          else {
+            map[x,y] = 0;
           }
         }
       }
