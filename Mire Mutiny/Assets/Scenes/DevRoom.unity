@@ -3964,6 +3964,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24300002, guid: e3d9d23697f61824eb98c478d2fd5fc2,
         type: 2}
+    - target: {fileID: 7202919889890683865, guid: 94d07ad063113f84392a371cc50e3f49,
+        type: 3}
+      propertyPath: literalSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7202919889890683865, guid: 94d07ad063113f84392a371cc50e3f49,
+        type: 3}
+      propertyPath: shotSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7202919889890683865, guid: 94d07ad063113f84392a371cc50e3f49,
+        type: 3}
+      propertyPath: shotQuickness
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7202919889890683865, guid: 94d07ad063113f84392a371cc50e3f49,
+        type: 3}
+      propertyPath: shotLife
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 7202919889890683865, guid: 94d07ad063113f84392a371cc50e3f49,
+        type: 3}
+      propertyPath: dashTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7202919889890683865, guid: 94d07ad063113f84392a371cc50e3f49,
+        type: 3}
+      propertyPath: dashAnimWait
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7926221034960441495, guid: 94d07ad063113f84392a371cc50e3f49,
         type: 3}
       propertyPath: m_LocalPosition.y
