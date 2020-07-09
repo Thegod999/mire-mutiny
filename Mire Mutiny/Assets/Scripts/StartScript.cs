@@ -4,29 +4,20 @@ using UnityEngine;
 
 public class StartScript : MonoBehaviour
 {
-    public float shotSpeed = 30;
-    public float literalSpeed = 4;
-    public float shotQuickness = 40;
-    public float shotLife = 120;
-    public float dashTime = 30;
-    public float dashAnimWait = 30;
     // Start is called before the first frame update
     void Start()
     {
-      UpdateStats();
+      PlayerPrefs.SetFloat("Shot_Speed", 30);
+      PlayerPrefs.SetFloat("Literal_Speed", 4);
+      PlayerPrefs.SetFloat("Shot_Quickness", 40);
+      PlayerPrefs.SetFloat("Shot_Life", 120);
+      PlayerPrefs.SetFloat("dash_Time", 30);
+      PlayerPrefs.SetFloat("dash_anim_wait", 30);
     }
-    void Update() {
-      if (Input.GetKey(KeyCode.U)) {
-        PlayerPrefs.DeleteAll();
-        UpdateStats();
-      }
-    }
-    void UpdateStats() {
-      PlayerPrefs.SetFloat("Shot_Speed", shotSpeed);
-      PlayerPrefs.SetFloat("Literal_Speed", literalSpeed);
-      PlayerPrefs.SetFloat("Shot_Quickness", shotQuickness);
-      PlayerPrefs.SetFloat("Shot_Life", shotLife);
-      PlayerPrefs.SetFloat("dash_Time", dashTime);
-      PlayerPrefs.SetFloat("dash_anim_wait", dashAnimWait);
+
+    // Update is called once per frame
+    void Update()
+    {
+
     }
 }
