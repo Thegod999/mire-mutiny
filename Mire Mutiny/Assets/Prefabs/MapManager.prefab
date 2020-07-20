@@ -155,7 +155,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2033430361595981091}
   - component: {fileID: 2033430361595981092}
-  - component: {fileID: 6177554892787766926}
   m_Layer: 0
   m_Name: MapGenerator
   m_TagString: Untagged
@@ -195,10 +194,7 @@ MonoBehaviour:
   maxHeight: 100
   width: 0
   height: 0
-  spawnDis: 0
-  endFromSpawnDis: 0
   smoothness: 4
-  extrudeFromEdge: 0
   roomThresholdSize: 1
   wallThresholdSize: 2
   pathThickness: 5
@@ -209,20 +205,6 @@ MonoBehaviour:
   GroundPrefabClone: {fileID: 2033430361754996200}
   MapGen: {fileID: 2033430361754996200}
   currentLV: 0
---- !u!114 &6177554892787766926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2033430361595981093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08225d99b454a484b85d817669b7756f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scale: 1
-  mapComponent: {fileID: 0}
 --- !u!1 &2033430361721900037
 GameObject:
   m_ObjectHideFlags: 0
